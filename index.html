@@ -48,25 +48,24 @@
             background: url('https://via.placeholder.com/120x160') center/cover no-repeat;
         }
         .card-back {
-            background: url('image.png') center/cover no-repeat;
-            color: black;
+            background: url('https://www.soy502.com/sites/default/files/styles/full_node/public/2019/Nov/12/ninos_memes_soy502_guatemala.jpg') center/cover no-repeat;
             transform: rotateY(180deg);
             padding: 10px;
             font-size: 14px;
             text-align: center;
             position: relative;
+            color: black;
         }
-
         .card-back::before {
             content: '';
             position: absolute;
             inset: 0;
-            background-color: rgba(255, 255, 255, 0.85);
+            background-color: rgba(255, 255, 255, 0.8);
             border-radius: 10px;
             z-index: 0;
         }
-
-        .card-back {
+        .card-back > * {
+            position: relative;
             z-index: 1;
         }
     </style>
@@ -90,7 +89,7 @@
 
         const board = document.getElementById("board");
 
-        preguntas.forEach((pregunta, index) => {
+        preguntas.forEach((pregunta) => {
             let card = document.createElement("div");
             card.classList.add("card");
             card.innerHTML = `
@@ -98,13 +97,6 @@
                     <div class="card-front"></div>
                     <div class="card-back">${pregunta}</div>
                 </div>
-            `;
-            card.onclick = () => card.classList.toggle("flipped");
-            board.appendChild(card);
-        });
-    </script>
-</body>
-</html>
             `;
             card.onclick = () => card.classList.toggle("flipped");
             board.appendChild(card);
