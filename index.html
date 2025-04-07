@@ -48,12 +48,26 @@
             background: url('https://via.placeholder.com/120x160') center/cover no-repeat;
         }
         .card-back {
-            background-color: white;
+            background: url('image.png') center/cover no-repeat;
             color: black;
             transform: rotateY(180deg);
             padding: 10px;
             font-size: 14px;
             text-align: center;
+            position: relative;
+        }
+
+        .card-back::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 10px;
+            z-index: 0;
+        }
+
+        .card-back {
+            z-index: 1;
         }
     </style>
 </head>
@@ -66,10 +80,10 @@
             "¿Qué creés que tu equipo espera de vos como team lead?",
             "¿De qué forma tu facilitación afecta las decisiones de tu equipo?",
             "¿Qué hacés cuando no estás de acuerdo con una opinión o decisión en una reunión de equipo?",
-            "¿Cuando fué la última vez que permitiste que el equipo experimente?",
-            "¿Qué conversaciones tuviste o evitaste y crees marcaron la diferencia?",
-            "¿Qué emociones sentiste frecuentes en el último tiempo y qué te dicen sobre cómo estan trabajando?",
-            "¿En qué momentos sentis que el equipo está alineado? ¿Y en cuáles sentís desconexión?",
+            "¿Cuándo fue la última vez que permitiste que el equipo experimente?",
+            "¿Qué conversaciones tuviste o evitaste y creés marcaron la diferencia?",
+            "¿Qué emociones sentiste frecuentes en el último tiempo y qué te dicen sobre cómo están trabajando?",
+            "¿En qué momentos sentís que el equipo está alineado? ¿Y en cuáles sentís desconexión?",
             "¿Cuántas veces te ves involucrado en discusiones de contenido dentro del equipo? ¿Qué podrías hacer para minimizar esa cantidad?",
             "¿Qué creencias sobre el equipo se hicieron evidentes en el último tiempo? ¿Te potencian o te limitan?"
         ];
@@ -84,6 +98,13 @@
                     <div class="card-front"></div>
                     <div class="card-back">${pregunta}</div>
                 </div>
+            `;
+            card.onclick = () => card.classList.toggle("flipped");
+            board.appendChild(card);
+        });
+    </script>
+</body>
+</html>
             `;
             card.onclick = () => card.classList.toggle("flipped");
             board.appendChild(card);
